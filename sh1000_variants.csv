@@ -1,4 +1,4 @@
-Treatment,Type,Strain,Mutation,Locus tag,Annotation,Function
+Treatment,Type,Label,Mutation,Locus tag,Annotation,Function
 PG,population,4,frameshift variant c.117delG p.Gly41fs,PROKKA_01659,hemY,Protoporphyrinogen oxidase
 PG,colony,4-s-c1,frameshift variant c.117delG p.Gly41fs,PROKKA_01659,hemY,Protoporphyrinogen oxidase
 PG,population,32,frameshift variant c.117delG p.Gly41fs,PROKKA_01659,hemY,Protoporphyrinogen oxidase
