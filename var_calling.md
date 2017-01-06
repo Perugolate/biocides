@@ -60,6 +60,8 @@ vcf-merge *vcf.gz > sh1000.vcf
 
 ## SH1000 variants
 
+You can download this as a csv [here](https://github.com/Perugolate/biocides/blob/master/sh1000_variants.csv).
+
 |Treatment|  Type        | Strain   |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
 |---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
 |  PG     |  population  |    4     |  frameshift variant c.117delG p.Gly41fs                                                         |  PROKKA_01659|   *hemY*  |  Protoporphyrinogen oxidase                      | 
