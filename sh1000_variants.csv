@@ -7,9 +7,9 @@ PG,population,4,stop gained c.991A>T p.Lys331*,PROKKA_01871,cls2,Cardiolipin syn
 PG,colony,4-s-c1,stop gained c.991A>T p.Lys331*,PROKKA_01871,cls2,Cardiolipin synthase
 PG,population,32,frameshift variant c.786delA p.Lys262fs,PROKKA_01871,cls2,Cardiolipin synthase
 PG,colony,32-s-c1,frameshift variant c.786delA p.Lys262fs,PROKKA_01871,cls2,Cardiolipin synthase
-PG,colony,32-s-c1,missense variant c.515C>T p.Pro172Leu,PROKKA_01192,parE,DNA topoisomerase 4 subunit B
 PG,population,33,stop lost c.1485A>T p.Ter495Tyrext*?,PROKKA_01871,cls2,Cardiolipin synthase
 PG,colony,33-s-c1,stop lost c.1485A>T p.Ter495Tyrext*?,PROKKA_01871,cls2,Cardiolipin synthase
+PG,colony,32-s-c1,missense variant c.515C>T p.Pro172Leu,PROKKA_01192,parE,DNA topoisomerase 4 subunit B
 PG,population,33,stop gained c.703C>T p.Gln235*,PROKKA_01660,hemH,Ferrochelatase
 PG,colony,33-s-c1,stop gained c.703C>T p.Gln235*,PROKKA_01660,hemH,Ferrochelatase
 PG,population,33,g.2185374C>T,intergenic,-,-
