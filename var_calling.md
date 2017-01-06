@@ -32,7 +32,7 @@ So there are actually a few SNPs. The usual ribosomal operons etc.:
 |snp |        |       | non_coding_transcript_variant         |      |16S ribosomal RNA             |
 |snp |184/282 | 62/93 | missense_variant c.184T>A p.Ser62Thr  |      |hypothetical protein          |
 
-Alter the reference to reflect the differences and reannotate the new reference:
+Alter the reference to reflect the differences and re-annotate the new reference:
 
 ```sh
 bcftools consensus -f   53_S3/53_S3.vcf.gz  -o sh1000_dueppel.fna
@@ -48,7 +48,7 @@ do
 done
 ```
 
-Merge the vcf files
+Merge the vcf files:
 
 ```sh
 for i in `cut -f 5 sh1000.tsv | grep -v suffix`
@@ -102,11 +102,9 @@ vcf-merge *vcf.gz > sh1000.vcf
 
 Table 1. Summary of all mutations. PG, pexiganan; BAC, benzalkonium chloride; CON, control.
 
-```
-
 # ATCC 6538
 
-We will assemble the PacBio reads (when available) and polish with the illumina reads. But in the meantime we will work with an assembly of the only the illumina reads.
+We will assemble the PacBio reads (when available) and polish with the illumina reads. But in the meantime we will work with an assembly of only the illumina reads.
 
 ## Assemble with `a5miseq` and annotate with `prokka`:
 
