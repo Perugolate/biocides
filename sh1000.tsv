@@ -1,0 +1,17 @@
+ID	label	description	type	suffix	S	treatment
+11	11	plate 9 SH1000 WT 5	population	11_S8	S8	control
+14	14	plate 9 SH1000 BAC 2ug line 5	population	14_S10	S10	bac
+1	1	SH1000 WT 1 plate 9	population	1_S4	S4	control
+24	24	plate 9 SH1000 A3 WT3	population	24_S14	S14	control
+32	32	plate 9 SH1000 Pex 512 line5	population	32_S19	S19	pex
+33	33	plate 9 SH1000 Pex 512 line2	population	33_S20	S20	pex
+35	35	plate 9 SH1000 BAC 2ug line 1	population	35_S21	S21	bac
+41	4-s-c1	SH1000 Pex 512 line1 plate 9	colony	41_S23	S23	pex
+42	7-s-c1	SH1000 BAC 2ug line 4 plate 9	colony	42_S24	S24	bac
+43	14-s-c2	plate 9 SH1000 BAC 2ug line 5	colony	43_S25	S25	bac
+47	32-s-c1	plate 9 SH1000 Pex 512 line5	colony	47_S29	S29	pex
+48	33-s-c1	plate 9 SH1000 Pex 512 line2	colony	48_S30	S30	pex
+49	35-s-c2	plate 9 SH1000 BAC 2ug line 1	colony	49_S31	S31	bac
+4	4	SH1000 Pex 512 line1 plate 9	population	4_S6	S6	pex
+53	A-S	ancestor SH1000	population	53_S3	S3	ancestor
+7	7	SH1000 BAC 2ug line 4 plate 9	population	7_S7	S7	bac

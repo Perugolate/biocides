@@ -1,0 +1,33 @@
+ID,label,description,
+51,A-A,Ancestor ATCC 6538,population
+52,A-C,Ancestor CC398,population
+53,A-S,ancestor SH1000,population
+1,1,SH1000 WT 1 plate 9,population
+3,3,CC398 WT1 plate 9,population
+4,4,SH1000 Pex 512 line1 plate 9,population
+7,7,SH1000 BAC 2ug line 4 plate 9,population
+11,11,plate 9 SH1000 WT 5 ,population
+13,13,plate 9 CC398 WT5 ,population
+14,14,plate 9 SH1000 BAC 2ug line 5,population
+17,17,plate 9 ATCC6538 BAC 1ug (1ug) line 3 ,population
+21,21,plate 8 CC398 BAC 2ug (1ug) line 4,population
+22,22,plate 8 CC398 BAC 2ug (1ug) line 5,population
+24,24,plate 9 SH1000 A3 WT3,population
+26,26,plate 9 ATCC 6538 A9 WT2,population
+27,27,plate 9 ATCC 6538 A10 WT3,population
+28,28,plate 9 ATCC 6538 A11 WT4,population
+31,31,plate 9 CC398 F11 WT4,population
+32,32,plate 9 SH1000 Pex 512 line5,population
+33,33,plate 9 SH1000 Pex 512 line2 ,population
+35,35,plate 9 SH1000 BAC 2ug line 1,population
+40,40,plate 9 CC398 BAC 2ug line 1,population
+41,4-s-c1,SH1000 Pex 512 line1 plate 9,colony
+42,7-s-c1,SH1000 BAC 2ug line 4 plate 9,colony
+43,14-s-c2,plate 9 SH1000 BAC 2ug line 5,colony
+44,17-s-c1,plate 9 ATCC6538 BAC 1ug (1ug) line 3 ,colony
+45,21-s-c1,plate 8 CC398 BAC 2ug (1ug) line 4,colony
+46,22-s-c1,plate 8 CC398 BAC 2ug (1ug) line 5,colony
+47,32-s-c1,plate 9 SH1000 Pex 512 line5,colony
+48,33-s-c1,plate 9 SH1000 Pex 512 line2 ,colony
+49,35-s-c2,plate 9 SH1000 BAC 2ug line 1,colony
+50,40-s-c2,plate 9 CC398 BAC 2ug line 1,colony
