@@ -32,6 +32,8 @@ So there are actually a few SNPs. The usual ribosomal operons etc.:
 |snp |        |       | non_coding_transcript_variant         |      |16S ribosomal RNA             |
 |snp |184/282 | 62/93 | missense_variant c.184T>A p.Ser62Thr  |      |hypothetical protein          |
 
+Table 1. SNPs between the SH1000 reference genome and the particular SH1000 strain used here.
+
 Alter the reference to reflect the differences and re-annotate the new reference:
 
 ```sh
@@ -102,7 +104,7 @@ You can download this as a csv [here](https://github.com/Perugolate/biocides/blo
 |  BAC    |  colony      | 35-s-c2  |  stop gained c.2035C>T p.Gln679\*                                                               |  PROKKA_01463|   *relA*  |  GTP pyrophosphokinase                           | 
 |  CON    |  population  |   11     |  g.1960175G>A                                                                                   |  intergenic  |    -      |  -                                               | 
 
-Table 1. Summary of all mutations. PG, pexiganan; BAC, benzalkonium chloride; CON, control.
+Table 2. Summary of all mutations. PG, pexiganan; BAC, benzalkonium chloride; CON, control.
 
 # ATCC 6538
 
@@ -119,6 +121,8 @@ prokka --cpus 12 atcc6538_a5.contigs.fasta --genus Staphylococcus --prefix atcc6
 |-----------|---------|-----------|-------------|------------------|------|-----------|----------|--------------------|---------|-----------|-----------------|---------|--------|------------|---------------------|--------------|------| 
 |atcc6538_a5|   25    |  25       | 2775939     |  662992          |306853|  1090946  | 1080446  |  99.04             |308243493| 281315666 |     91.26       | 111.04  | 101.34 |  107       |   82                | 2775503      | 32.7 |
 
+Table 3. Summary of ATCC6538 assembly.
+
 The assembly ends up pretty good. I'm sure PacBio will get this is to 1 contig (plus any plasmids).
 
 ## Map and call variants
@@ -131,7 +135,7 @@ The assembly ends up pretty good. I'm sure PacBio will get this is to 1 contig (
 |  BAC    |  population  |    17    |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           | 
 |  BAC    |  colony      | 17-s-c1  |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           |
 
-Summary of all mutations in ATCC6538 lines.
+Table 4. Summary of all mutations in ATCC6538 lines. BAC, benzalkonium chloride.
 
 Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
 
@@ -147,6 +151,8 @@ prokka --cpus 12 cc398_a5.contigs.fasta --genus Staphylococcus --prefix cc398_a5
 |File Name|Contigs|Scaffolds|Genome Size|Longest Scaffold|N50|Raw reads|EC Reads|% reads passing EC|Raw nt|EC nt|% nt passing EC|Raw cov|EC cov|Median cov|10th percentile cov|bases >= Q40|% GC|
 |---------|-------|---------|-----------|----------------|---|---------|--------|------------------|------|-----|---------------|-------|------|----------|-------------------|------------|----|
 |cc398    |   28  |    28   |  2781805  |     643841  |308974| 1036352 |1025876 |98.99       94411942| 266521751|      90.53    |105.83 | 95.81|   103    | 81                | 2781376    |32.8|
+
+Table 5. Summary of CC398 assembly.
 
 Also a pretty good assembly.
 
@@ -166,7 +172,7 @@ Also a pretty good assembly.
 |  BAC    |  colony      | 22-s-c1  |  missense variant c.841C>A p.Gln281Lys                                                          |  PROKKA_00233|  *pbpX_1* |     Putative penicillin-binding protein PbpX     |
 |  BAC    |  colony      | 40-s-c2  |  missense variant c.808G>A p.Glu270Lys                                                          |  PROKKA_00848|  *sigA*   |     RNA polymerase sigma factor SigA             |
 
-Summary of all mutations in ATCC6538 lines.
+Table 6. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 
 Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
 
