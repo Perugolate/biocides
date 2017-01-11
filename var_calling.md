@@ -144,6 +144,12 @@ a5_pipeline.pl --threads 12 52_S2_L001_R1_001.fastq.gz 52_S2_L001_R2_001.fastq.g
 prokka --cpus 12 cc398_a5.contigs.fasta --genus Staphylococcus --prefix cc398_a5 --force &> cc398_a5.log
 ```
 
+|File Name|Contigs|Scaffolds|Genome Size|Longest Scaffold|N50|Raw reads|EC Reads|% reads passing EC|Raw nt|EC nt|% nt passing EC|Raw cov|EC cov|Median cov|10th percentile cov|bases >= Q40|% GC|
+|---------|-------|---------|-----------|----------------|---|---------|--------|------------------|------|-----|---------------|-------|------|----------|-------------------|------------|----|
+|cc398    |   28  |    28   |  2781805  |     643841  |308974| 1036352 |1025876 |98.99       94411942| 266521751|      90.53    |105.83 | 95.81|   103    | 81                | 2781376    |32.8|
+
+Also a pretty good assembly.
+
 ## Map and call variants
 
 ```sh
