@@ -123,6 +123,18 @@ The assembly ends up pretty good. I'm sure PacBio will get this is to 1 contig (
 
 ## Map and call variants
 
+```sh
+```
+
+|Treatment|  Type        | Label    |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
+|---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
+|  BAC    |  population  |    17    |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 17-s-c1  |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           |
+
+Summary of all mutations in ATCC6538 lines.
+
+Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
+
 # CC398
 
 ## Assemble with `a5miseq` and annotate with `prokka`:
@@ -133,4 +145,23 @@ prokka --cpus 12 cc398_a5.contigs.fasta --genus Staphylococcus --prefix cc398_a5
 ```
 
 ## Map and call variants
+
+```sh
+```
+
+|Treatment|  Type        | Label    |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
+|---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
+|  BAC    |  population  |    21    |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 21-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
+|  BAC    |  population  |    22    |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 22-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
+|  BAC    |  colony      | 22-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
+|  BAC    |  colony      | 21-s-c1  |  frameshift variant c.88delC p.Gln30fs                                                          |  PROKKA_00233|  *pbpX_1* |     Putative penicillin-binding protein PbpX     |
+|  BAC    |  colony      | 22-s-c1  |  missense variant c.841C>A p.Gln281Lys                                                          |  PROKKA_00233|  *pbpX_1* |     Putative penicillin-binding protein PbpX     |
+|  BAC    |  colony      | 40-s-c2  |  missense variant c.808G>A p.Glu270Lys                                                          |  PROKKA_00848|  *sigA*   |     RNA polymerase sigma factor SigA             |
+
+Summary of all mutations in ATCC6538 lines.
+
+Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
+
 
