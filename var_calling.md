@@ -60,7 +60,7 @@ vcf-merge *vcf.gz > sh1000.vcf
 
 ## SH1000 variants
 
-You can download this as a csv [here](https://github.com/Perugolate/biocides/blob/master/sh1000_variants.csv).
+You can download this as a csv [here](https://github.com/Perugolate/biocides/blob/master/sh1000/sh1000_variants.csv).
 
 |Treatment|  Type        | Label   |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
 |---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
