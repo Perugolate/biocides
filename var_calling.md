@@ -131,7 +131,15 @@ res <- calcIntegerCopyNumbers(res)
 plot(res, which=1)
 ```
 
-No CNVs.
+No CNVs. Check coverage plots:
+
+```sh
+for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../sh1000_dueppel/sh1000_dueppel.genome; done
+```
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/sh1000_count.png)
+
+Nothing obvious here. The high-coverage region is a transposon that we always see in SH1000.
 
 # ATCC 6538
 
@@ -191,6 +199,14 @@ plot(res, which=1)
 
 No CNVs.
 
+```sh
+for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../atcc6538_a5/atcc6538_a5.genome; done
+```
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/atcc6538_count.png)
+
+The high-coverage regions here are from ribosomal operons.
+
 # CC398
 
 ## Assemble with `a5miseq` and annotate with `prokka`:
@@ -249,4 +265,12 @@ plot(res, which=1)
 ```
 
 No CNVs.
+
+```sh
+for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../cc398_a5/cc398_a5.genome; done
+```
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_count.png)
+
+Again, the high-coverage regions here are from ribosomal operons.
 
