@@ -4,7 +4,7 @@
  * [Check the reference](#check-the-reference)
  * [Map and call variants](#map-and-call-variants)
  * [SH1000 variants](#sh1000-variants)
- * [Sh1000 CNVs](#sh1000-cnvs)
+ * [SH1000 CNVs](#sh1000-cnvs)
 - [ATCC 6538](#atcc-6538)
  * [Assemble with `a5miseq` and annotate with `prokka`](#assemble-with-a5miseq-and-annotate-with-prokka)
  * [Map and call variants](#map-and-call-variants)
@@ -205,7 +205,7 @@ for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../atcc6538_a
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/atcc6538_count.png)
 
-The high-coverage regions here are from ribosomal operons.
+The high-coverage region on the final scaffold is from ribosomal operons.
 
 # CC398
 
