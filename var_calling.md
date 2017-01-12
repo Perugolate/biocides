@@ -4,12 +4,15 @@
  * [Check the reference](#check-the-reference)
  * [Map and call variants](#map-and-call-variants)
  * [SH1000 variants](#sh1000-variants)
+ * [Sh1000 CNVs](#sh1000-cnvs)
 - [ATCC 6538](#atcc-6538)
  * [Assemble with `a5miseq` and annotate with `prokka`](#assemble-with-a5miseq-and-annotate-with-prokka)
  * [Map and call variants](#map-and-call-variants)
+ * [ATCC 6538 CNVs](#atcc-6538-cnvs)
 - [CC398](#cc398)
  * [Assemble with `a5miseq` and annotate with `prokka`](#assemble-with-a5miseq-and-annotate-with-prokka)
  * [Map and call variants](#map-and-call-variants)
+ * [CC398 CNVs](#cc398-cnvs)
 
 # SH1000
 
@@ -106,6 +109,30 @@ You can download this as a csv [here](https://github.com/Perugolate/biocides/blo
 
 Table 2. Summary of all mutations. PG, pexiganan; BAC, benzalkonium chloride; CON, control.
 
+## SH1000 CNVs
+
+```sh
+for i in `cut -f5 ../sh1000.tsv | grep -v suffix`
+do
+  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" ../sh1000_dueppel/sh1000_dueppel.fna ../../../${i}_L001_R1_001.fastq.
+gz ../../../${i}_L001_R2_001.fastq.gz > $i.sam
+  picard-tools SortSam INPUT=$i.sam OUTPUT=$i.bam SORT_ORDER=coordinate
+  picard-tools BuildBamIndex INPUT=$i.bam
+done
+```
+
+```r
+library("cn.mops")
+library("magrittr")
+BAMFiles <- list.files(pattern=".bam$")
+bamDataRanges <- getReadCountsFromBAM(BAMFiles, mode="paired")
+res <- haplocn.mops(bamDataRanges)
+res <- calcIntegerCopyNumbers(res)
+plot(res, which=1)
+```
+
+No CNVs.
+
 # ATCC 6538
 
 We will assemble the PacBio reads (when available) and polish with the illumina reads. But in the meantime we will work with an assembly of only the illumina reads.
@@ -137,7 +164,32 @@ The assembly ends up pretty good. I'm sure PacBio will get this is to 1 contig (
 
 Table 4. Summary of all mutations in ATCC6538 lines. BAC, benzalkonium chloride.
 
-Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
+Can't find any variants in the control lines.
+
+## ATCC 6538 CNVs
+
+```sh
+mkdir cnv && cd cnv
+for i in `cat ../atcc6538.tsv`
+do
+  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" ../atcc6538_a5/atcc6538_a5.fna ../../../${i}_L001_R1_001.fastq.gz ../
+../../${i}_L001_R2_001.fastq.gz > $i.sam
+  picard-tools SortSam INPUT=$i.sam OUTPUT=$i.bam SORT_ORDER=coordinate
+  picard-tools BuildBamIndex INPUT=$i.bam
+done
+```
+
+```r
+library("cn.mops")
+library("magrittr")
+BAMFiles <- list.files(pattern=".bam$")
+bamDataRanges <- getReadCountsFromBAM(BAMFiles, mode="paired")
+res <- haplocn.mops(bamDataRanges)
+res <- calcIntegerCopyNumbers(res)
+plot(res, which=1)
+```
+
+No CNVs.
 
 # CC398
 
@@ -174,6 +226,27 @@ Also a pretty good assembly.
 
 Table 6. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 
-Can't find any variants in the control lines. Will check investigate the SNP a bit more ad also check for CNVs.
+## CC398 CNVs
 
+```sh
+mkdir cnv && cd cnv
+for i in `cat ../cc398.tsv`   
+do
+  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" ../cc398_a5/cc398_a5.fna ../../../${i}_L001_R1_001.fastq.gz ../../../${i}_L001_R2_001.fastq.gz > $i.sam       
+  picard-tools SortSam INPUT=$i.sam OUTPUT=$i.bam SORT_ORDER=coordinate
+  picard-tools BuildBamIndex INPUT=$i.bam
+done
+```
+
+```r
+library("cn.mops")
+library("magrittr")
+BAMFiles <- list.files(pattern=".bam$")
+bamDataRanges <- getReadCountsFromBAM(BAMFiles, mode="paired")
+res <- haplocn.mops(bamDataRanges)
+res <- calcIntegerCopyNumbers(res)
+plot(res, which=1)
+```
+
+No CNVs.
 
