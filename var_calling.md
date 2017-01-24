@@ -183,10 +183,10 @@ Can't find any variants in the control lines.
 ## ATCC 6538 CNVs
 
 ```sh
-mkdir cnv && cd cnv
-for i in `cat ../atcc6538.tsv`
+bwa index pb2.pi.fna
+for i in `cat atcc6538.tsv`
 do
-  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" ../atcc6538_a5/atcc6538_a5.fna ../../../${i}_L001_R1_001.fastq.gz ../
+  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" pb1.pi.fna ../../../${i}_L001_R1_001.fastq.gz ../
 ../../${i}_L001_R2_001.fastq.gz > $i.sam
   picard-tools SortSam INPUT=$i.sam OUTPUT=$i.bam SORT_ORDER=coordinate
   picard-tools BuildBamIndex INPUT=$i.bam
@@ -206,12 +206,10 @@ plot(res, which=1)
 No CNVs.
 
 ```sh
-for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../atcc6538_a5/atcc6538_a5.genome; done
+for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf pb1.pi.fna; done
 ```
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/atcc6538_count.png)
-
-The high-coverage region on the final scaffold is from ribosomal operons.
 
 # CC398
 
@@ -256,10 +254,10 @@ Table 6. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 ## CC398 CNVs
 
 ```sh
-mkdir cnv && cd cnv
-for i in `cat ../cc398.tsv`   
+bwa index pb2.pi.fna
+for i in `cat cc398.tsv`   
 do
-  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" ../cc398_a5/cc398_a5.fna ../../../${i}_L001_R1_001.fastq.gz ../../../${i}_L001_R2_001.fastq.gz > $i.sam       
+  bwa mem -t 12 -R "@RG\tID:${i}\tSM:${i}" pb2.pi.fna ../../../../../${i}_L001_R1_001.fastq.gz ../../../../../${i}_L001_R2_001.fastq.gz > $i.sam       
   picard-tools SortSam INPUT=$i.sam OUTPUT=$i.bam SORT_ORDER=coordinate
   picard-tools BuildBamIndex INPUT=$i.bam
 done
@@ -278,10 +276,8 @@ plot(res, which=1)
 No CNVs.
 
 ```sh
-for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf ../cc398_a5/cc398_a5.genome; done
+for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf pb2.pi.fna; done
 ```
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_count.png)
-
-Again, the high-coverage regions here are from ribosomal operons.
 
