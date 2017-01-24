@@ -143,21 +143,23 @@ Nothing obvious here. The high-coverage region is a transposon that we always se
 
 # ATCC 6538
 
-We will assemble the PacBio reads (when available) and polish with the illumina reads. But in the meantime we will work with an assembly of only the illumina reads.
-
 ## Assemble ATCC6538 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`
 
 ```sh
-
+# assemble the pacbio reads
 canu -p pb1 -d pb1 genomeSize=2.7m -pacbio-raw 11829_1.filtered_subreads.fastq.gz
 cd pb1
+# this is annotation is not necessary - just for seeing where the errors were
 prokka --cpus 12 pb2.contigs.fasta --genus Staphylococcus --prefix pb1 &> pb1.log
 cd pb1
+# align cognate illumina library to correct the errors
 bwa index pb1.fna
 bwa mem -t 12 pb1.fna  ../../../../51_S1_L001_R1_001.fastq.gz ../../../../51_S1_L001_R2_001.fastq.gz  > 51.sam
 picard-tools SortSam INPUT=51.sam OUTPUT=51.bam SORT_ORDER=coordinate
 picard-tools BuildBamIndex INPUT=51.bam
+# use the alignment to correct the assembly
 java -jar ~/opt/pilon-1.21.jar --genome pb1.fna --frags 51.bam
+# annotate the corrected assembly
 prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb1.pi &> pb1.pi.log
 ```
 
@@ -165,7 +167,7 @@ prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb1.pi &> pb1.pi.lo
 
 ```sh
 cd pb1.pi
-for i in `cat /media/tera5/pigs/biocides/atcc6538/atcc6538.tsv`
+for i in `cat atcc6538.tsv`
 do
   snippy --cpus 12 --outdir $i --reference pb1.pi.gbk --rgid $i --prefix $i --pe1 ../../../../../${i}_L001_R1_001.fastq.gz --pe2 ../../../../../${i}_L001_R2_001.fastq.gz &> $i.log
 done
