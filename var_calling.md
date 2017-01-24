@@ -178,7 +178,7 @@ done
 |  BAC    |  population  |    17    |  g.1724366C>G                                                                                    |  Intergenic  |     -     |                      -                           | 
 |  BAC    |  colony      | 17-s-c1  |  g.1724366C>G                                                                                    |  Intergenic  |     -     |                      -                           |
 
-Table 4. Summary of all mutations in ATCC6538 lines. BAC, benzalkonium chloride.
+Table 3. Summary of all mutations in ATCC6538 lines. BAC, benzalkonium chloride.
 
 Can't find any variants in the control lines.
 
@@ -251,7 +251,7 @@ done
 |  BAC    |  colony      | 22-s-c1  |  missense variant c.841C>A p.Gln281Lys                                                          |  PROKKA_01239|  *pbpX* |     Putative penicillin-binding protein PbpX     |
 |  BAC    |  colony      | 40-s-c2  |  missense variant c.808G>A p.Glu270Lys                                                          |  PROKKA_01802|  *sigA*   |     RNA polymerase sigma factor SigA             |
 
-Table 6. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
+Table 4. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 
 ## CC398 CNVs
 
