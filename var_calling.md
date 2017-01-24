@@ -6,12 +6,12 @@
  * [SH1000 variants](#sh1000-variants)
  * [SH1000 CNVs](#sh1000-cnvs)
 - [ATCC 6538](#atcc-6538)
- * [Assemble with `a5miseq` and annotate with `prokka`](#assemble-with-a5miseq-and-annotate-with-prokka)
- * [Map and call variants](#map-and-call-variants)
+ * [Assemble ATCC6538 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-atcc6538-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
+ * [Map and call ATCC6538 variants](#map-and-call-atcc6538-variants)
  * [ATCC 6538 CNVs](#atcc-6538-cnvs)
 - [CC398](#cc398)
- * [Assemble with `a5miseq` and annotate with `prokka`](#assemble-with-a5miseq-and-annotate-with-prokka)
- * [Map and call variants](#map-and-call-variants)
+ * [Assemble CC398 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-cc398-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
+ * [Map and call CC398 variants](#map-and-call-cc398-variants)
  * [CC398 CNVs](#cc398-cnvs)
 
 # SH1000
@@ -145,30 +145,36 @@ Nothing obvious here. The high-coverage region is a transposon that we always se
 
 We will assemble the PacBio reads (when available) and polish with the illumina reads. But in the meantime we will work with an assembly of only the illumina reads.
 
-## Assemble with `a5miseq` and annotate with `prokka`:
+## Assemble ATCC6538 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`
 
 ```sh
-a5_pipeline.pl --threads 12 51_S1_L001_R1_001.fastq.gz 51_S1_L001_R2_001.fastq.gz atcc6538_a5
-prokka --cpus 12 atcc6538_a5.contigs.fasta --genus Staphylococcus --prefix atcc6538_a5 --force &> atcc6538_a5.log
+
+canu -p pb1 -d pb1 genomeSize=2.7m -pacbio-raw 11829_1.filtered_subreads.fastq.gz
+cd pb1
+prokka --cpus 12 pb2.contigs.fasta --genus Staphylococcus --prefix pb1 &> pb1.log
+cd pb1
+bwa index pb1.fna
+bwa mem -t 12 pb1.fna  ../../../../51_S1_L001_R1_001.fastq.gz ../../../../51_S1_L001_R2_001.fastq.gz  > 51.sam
+picard-tools SortSam INPUT=51.sam OUTPUT=51.bam SORT_ORDER=coordinate
+picard-tools BuildBamIndex INPUT=51.bam
+java -jar ~/opt/pilon-1.21.jar --genome pb1.fna --frags 51.bam
+prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb1.pi &> pb1.pi.log
 ```
 
-|File Name  | Contigs | Scaffolds | Genome Size | Longest Scaffold | N50  | Raw reads | EC Reads | % reads passing EC | Raw nt  | EC nt     | % nt passing EC | Raw cov | EC cov | Median cov | 10th percentile cov | bases >= Q40 | % GC |
-|-----------|---------|-----------|-------------|------------------|------|-----------|----------|--------------------|---------|-----------|-----------------|---------|--------|------------|---------------------|--------------|------| 
-|atcc6538_a5|   25    |  25       | 2775939     |  662992          |306853|  1090946  | 1080446  |  99.04             |308243493| 281315666 |     91.26       | 111.04  | 101.34 |  107       |   82                | 2775503      | 32.7 |
-
-Table 3. Summary of ATCC6538 assembly.
-
-The assembly ends up pretty good. I'm sure PacBio will get this is to 1 contig (plus any plasmids).
-
-## Map and call variants
+## Map and call ATCC6538 variants
 
 ```sh
+cd pb1.pi
+for i in `cat /media/tera5/pigs/biocides/atcc6538/atcc6538.tsv`
+do
+  snippy --cpus 12 --outdir $i --reference pb1.pi.gbk --rgid $i --prefix $i --pe1 ../../../../../${i}_L001_R1_001.fastq.gz --pe2 ../../../../../${i}_L001_R2_001.fastq.gz &> $i.log
+done
 ```
 
 |Treatment|  Type        | Label    |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
 |---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
-|  BAC    |  population  |    17    |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           | 
-|  BAC    |  colony      | 17-s-c1  |  g.332893G>C                                                                                    |  Intergenic  |     -     |                      -                           |
+|  BAC    |  population  |    17    |  g.1724366C>G                                                                                    |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 17-s-c1  |  g.1724366C>G                                                                                    |  Intergenic  |     -     |                      -                           |
 
 Table 4. Summary of all mutations in ATCC6538 lines. BAC, benzalkonium chloride.
 
@@ -209,36 +215,41 @@ The high-coverage region on the final scaffold is from ribosomal operons.
 
 # CC398
 
-## Assemble with `a5miseq` and annotate with `prokka`:
+## Assemble CC398 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`
 
 ```sh
-a5_pipeline.pl --threads 12 52_S2_L001_R1_001.fastq.gz 52_S2_L001_R2_001.fastq.gz cc398_a5
-prokka --cpus 12 cc398_a5.contigs.fasta --genus Staphylococcus --prefix cc398_a5 --force &> cc398_a5.log
+
+canu -p pb2 -d pb2 genomeSize=2.7m -pacbio-raw 11829_2.filtered_subreads.fastq.gz
+cd pb2
+prokka --cpus 12 pb2.contigs.fasta --genus Staphylococcus --prefix pb2 &> pb2.log
+cd pb2
+bwa index pb2.fna
+bwa mem -t 12 pb2.fna  ../../../../52_S2_L001_R1_001.fastq.gz ../../../../52_S2_L001_R2_001.fastq.gz  > 52.sam
+picard-tools SortSam INPUT=52.sam OUTPUT=52.bam SORT_ORDER=coordinate
+picard-tools BuildBamIndex INPUT=52.bam
+java -jar ~/opt/pilon-1.21.jar --genome pb2.fna --frags 52.bam
+prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb2.pi &> pb2.pi.log
 ```
 
-|File Name|Contigs|Scaffolds|Genome Size|Longest Scaffold|N50|Raw reads|EC Reads|% reads passing EC|Raw nt|EC nt|% nt passing EC|Raw cov|EC cov|Median cov|10th percentile cov|bases >= Q40|% GC|
-|---------|-------|---------|-----------|----------------|---|---------|--------|------------------|------|-----|---------------|-------|------|----------|-------------------|------------|----|
-|cc398    |   28  |    28   |  2781805  |     643841  |308974| 1036352 |1025876 |98.99       94411942| 266521751|      90.53    |105.83 | 95.81|   103    | 81                | 2781376    |32.8|
-
-Table 5. Summary of CC398 assembly.
-
-Also a pretty good assembly.
-
-## Map and call variants
+## Map and call CC398 variants
 
 ```sh
+cd pb2.pi
+for i in `cat /media/tera5/pigs/biocides/cc398/cc398.tsv`
+do
+  snippy --cpus 12 --outdir $i --reference pb2.pi.gbk --rgid $i --prefix $i --pe1 ../../../../../${i}_L001_R1_001.fastq.gz --pe2 ../../../../../${i}_L001_R2_001.fastq.gz &> $i.log
+done
 ```
 
 |Treatment|  Type        | Label    |  Mutation                                                                                       |  Locus tag   | Annotation|  Function                                        |
 |---------|--------------|----------|-------------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
-|  BAC    |  population  |    21    |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           | 
-|  BAC    |  colony      | 21-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
-|  BAC    |  population  |    22    |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           | 
-|  BAC    |  colony      | 22-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
-|  BAC    |  colony      | 22-s-c1  |  g.550439.G>A                                                                                   |  Intergenic  |     -     |                      -                           |
-|  BAC    |  colony      | 21-s-c1  |  frameshift variant c.88delC p.Gln30fs                                                          |  PROKKA_00233|  *pbpX_1* |     Putative penicillin-binding protein PbpX     |
-|  BAC    |  colony      | 22-s-c1  |  missense variant c.841C>A p.Gln281Lys                                                          |  PROKKA_00233|  *pbpX_1* |     Putative penicillin-binding protein PbpX     |
-|  BAC    |  colony      | 40-s-c2  |  missense variant c.808G>A p.Glu270Lys                                                          |  PROKKA_00848|  *sigA*   |     RNA polymerase sigma factor SigA             |
+|  BAC    |  population  |    21    |  g.1051564.C>T                                                                                   |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 21-s-c1  |  g.1051564.C>T                                                                                   |  Intergenic  |     -     |                      -                           |
+|  BAC    |  population  |    22    |  g.1051564.C>T                                                                                   |  Intergenic  |     -     |                      -                           | 
+|  BAC    |  colony      | 22-s-c1  |  g.1051564.C>T                                                                                   |  Intergenic  |     -     |                      -                           |
+|  BAC    |  colony      | 21-s-c1  |  frameshift variant c.88delC p.Gln30fs                                                          |  PROKKA_01239|  *pbpX* |     Putative penicillin-binding protein PbpX     |
+|  BAC    |  colony      | 22-s-c1  |  missense variant c.841C>A p.Gln281Lys                                                          |  PROKKA_01239|  *pbpX* |     Putative penicillin-binding protein PbpX     |
+|  BAC    |  colony      | 40-s-c2  |  missense variant c.808G>A p.Glu270Lys                                                          |  PROKKA_01802|  *sigA*   |     RNA polymerase sigma factor SigA             |
 
 Table 6. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 
