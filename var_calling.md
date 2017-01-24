@@ -163,6 +163,8 @@ java -jar ~/opt/pilon-1.21.jar --genome pb1.fna --frags 51.bam
 prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb1.pi &> pb1.pi.log
 ```
 
+This produces a complete assembly.
+
 ## Map and call ATCC6538 variants
 
 ```sh
@@ -230,6 +232,8 @@ picard-tools BuildBamIndex INPUT=52.bam
 java -jar ~/opt/pilon-1.21.jar --genome pb2.fna --frags 52.bam
 prokka --cpus 12 pilon.fasta --genus Staphylococcus --prefix pb2.pi &> pb2.pi.log
 ```
+
+As with ATCC6538, this results in what appears to be a complete assembly.
 
 ## Map and call CC398 variants
 
