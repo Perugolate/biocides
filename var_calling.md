@@ -269,6 +269,14 @@ And also for missense variant c.808G>A p.Glu270Lys in samples 22 and 22-s-c1:
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1351724.png)
 
+### Intergenic SNP 1051564
+
+This lies in between PROKKA00957 and *tetA_2* (and upstream of both):
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1051564.png)
+
+I've not figured out if it is part of the promoter of either gene.
+
 ## CC398 CNVs
 
 ```sh
