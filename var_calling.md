@@ -257,6 +257,10 @@ done
 
 Table 4. Summary of all mutations in CC398 lines. BAC, benzalkonium chloride.
 
+The population sample 40 and the cognate colony sample 40-s-c2 are a good example of why it can be useful to have both types of sample: The mutation g.1955940.C>T (which cause the substitution c.808G>A p.Glu270Lys) is called in 40-s-c2 but not in 40. However when you inspect the alignments (see the figure below) you can see that the mutation is present in the population but not at a high enough frequency for it to be identified by the variant caller.
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_snp1955940.png)
+
 ## CC398 CNVs
 
 ```sh
