@@ -8,12 +8,12 @@
 - [ATCC 6538](#atcc-6538)
  * [Assemble ATCC6538 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-atcc6538-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
  * [Map and call ATCC6538 variants](#map-and-call-atcc6538-variants)
- - [Intergenic SNP 1051564](#intergenic-snp-1051564)
  * [ATCC 6538 CNVs](#atcc-6538-cnvs)
 - [CC398](#cc398)
  * [Assemble CC398 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-cc398-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
  * [Map and call CC398 variants](#map-and-call-cc398-variants)
  * [CC398 CNVs](#cc398-cnvs)
+- [The intergenic SNPs](#the-intergenic-snps)
 
 # SH1000
 
