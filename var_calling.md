@@ -261,6 +261,14 @@ The population sample 40 and the cognate colony sample 40-s-c2 are a good exampl
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_snp1955940.png)
 
+The same is true for frameshift variant c.88delC p.Gln30fs in samples 21 and 21-s-c1:
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1350970.png)
+
+And also for missense variant c.808G>A p.Glu270Lys in samples 22 and 22-s-c1:
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1351724.png)
+
 ## CC398 CNVs
 
 ```sh
