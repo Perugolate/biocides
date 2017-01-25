@@ -8,6 +8,7 @@
 - [ATCC 6538](#atcc-6538)
  * [Assemble ATCC6538 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-atcc6538-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
  * [Map and call ATCC6538 variants](#map-and-call-atcc6538-variants)
+ - [Intergenic SNP 1051564](#intergenic-snp-1051564)
  * [ATCC 6538 CNVs](#atcc-6538-cnvs)
 - [CC398](#cc398)
  * [Assemble CC398 PacBio reads with `canu`, correct with `pilon`, and annotate with `prokka`](#assemble-cc398-pacbio-reads-with-canu-correct-with-pilon-and-annotate-with-prokka)
@@ -269,14 +270,6 @@ And also for missense variant c.808G>A p.Glu270Lys in samples 22 and 22-s-c1:
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1351724.png)
 
-### Intergenic SNP 1051564
-
-This lies in between PROKKA00957 and *tetA_2* (and upstream of both):
-
-![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1051564.png)
-
-I've not figured out if it is part of the promoter of either gene.
-
 ## CC398 CNVs
 
 ```sh
@@ -306,4 +299,30 @@ for i in *bam; do /home/paul/opt/IGVTools/igvtools count $i $i.tdf pb2.pi.fna; d
 ```
 
 ![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_count.png)
+
+
+# The intergenic SNPs
+
+These look really promising.
+
+In all three backgrounds (i.e. SH1000, CC398, and ATCC6538) there are intergenic SNPs in between an unannotated gene and *tetA_2* (and upstream of both). The latter appears to be *norA* and may be related to *qacA*. These SNPs only occur in BAC-selected strains.
+
+![](https://github.com/Perugolate/biocides/blob/master/figs/cc398_1051564.png)
+
+I've not figured out if it is part of the promoter of either gene. The SNPs occur in the following strains:
+
+|Strain   |  Type        | Label    |  Mutation                                                                                   |  Locus tag   | Annotation|  Function                                        |
+|---------|--------------|----------|---------------------------------------------------------------------------------------------|--------------|-----------|--------------------------------------------------|
+| SH1000  |  population  |   33     |  g.687271T>A                                                                               |  intergenic  |    -      |  -                                               | 
+| SH1000  |  colony      | 33-s-c1  |  g.687271T>A                                                                               |  intergenic  |    -      |  -                                               |
+| ATCC6538|  population  |    17    |  g.1724366C>G                                                                               |  Intergenic  |     -     |                      -                           | 
+| ATCC6538|  colony      | 17-s-c1  |  g.1724366C>G                                                                               |  Intergenic  |     -     |                      -                           |
+| CC398   |  population  |    21    |  g.1051564.C>T                                                                              |  Intergenic  |     -     |                      -                           | 
+| CC398   |  colony      | 21-s-c1  |  g.1051564.C>T                                                                              |  Intergenic  |     -     |                      -                           |
+| CC398   |  population  |    22    |  g.1051564.C>T                                                                              |  Intergenic  |     -     |                      -                           | 
+| CC398   |  colony      | 22-s-c1  |  g.1051564.C>T                                                                              |  Intergenic  |     -     |                      -                           |
+
+Table 5. Summary of SNPs upstream of *norA* like gene.
+
+They occur 91 (SH1000), 92 (ATCC6538), and 104 (CC398) bp upstream of *norA*.
 
